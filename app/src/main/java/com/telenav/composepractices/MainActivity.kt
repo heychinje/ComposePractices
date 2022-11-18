@@ -5,10 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,16 +22,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            // There are 3 sample ways to arrange UI elements: Column, Row, and Box
-            // Column: place items vertically on the screen
-            // Row: place items horizontally on the screen
-            // Box: place items on the top of each other
-            Column(
+            /**
+             * There are 3 sample ways to arrange UI elements: Column, Row, and Box
+             *
+             * Column: place items vertically on the screen.
+             * arrangement: verticalArrangement
+             * alignment: horizontalAlignment
+             *
+             * Row: place items horizontally on the screen
+             * arrangement: horizontalArrangement
+             * alignment: verticalAlignment
+             *
+             */
+            Row(
                 modifier = Modifier
                     .background(color = Color.LightGray)
                     .fillMaxSize(0.5f),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
             ) {
                 Greeting("AB")
                 Greeting("CDEF")
@@ -47,7 +52,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String) {
     Text(
-        text = "Hello $name!",
+        text = name,
         fontSize = 32.sp,
         color = Color.Red,
         textAlign = TextAlign.Center,
