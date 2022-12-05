@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.telenav.composepractices.widgets.ListComposable
+import com.telenav.composepractices.widgets.ListLayout
 
 @Composable
 fun ListComposableTest() {
@@ -26,7 +26,7 @@ fun ListComposableTest() {
         "Saturday" to Color(0xFF9C27B0),
     )
 
-    ListComposable(items) { DefaultWeekCard(item = it) }
+    ListLayout(items) { DefaultWeekCard(item = it) }
 }
 
 @Composable

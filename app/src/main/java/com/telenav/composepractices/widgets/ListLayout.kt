@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 
 @Composable
-fun <T> ListComposable(
+fun <T> ListLayout(
     items: List<T>,
     modifier: Modifier = Modifier,
     isHorizontal: Boolean = true,
@@ -14,8 +14,6 @@ fun <T> ListComposable(
     Layout(
         modifier = modifier,
         content = {
-
-
             items.forEach { itemContent(it) }
 
             // TODO make sure that the first item is at the left
