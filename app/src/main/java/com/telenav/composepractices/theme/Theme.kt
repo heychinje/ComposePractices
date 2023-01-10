@@ -1,4 +1,4 @@
-package com.telenav.composepractices.ui.theme
+package com.telenav.composepractices.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
