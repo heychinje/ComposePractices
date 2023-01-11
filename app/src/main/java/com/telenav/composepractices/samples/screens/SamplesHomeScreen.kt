@@ -1,11 +1,7 @@
 package com.telenav.composepractices.samples.screens
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -31,18 +27,12 @@ fun SamplesHomeScreen(
     onBackClick: (@SampleName String) -> Unit,
     viewModel: SamplesViewModel = hiltViewModel()
 ) {
-    RootScreen(
-        screenName = SAMPLE_HOME,
+    RootScreen(screenName = SAMPLE_HOME,
         backIcon = null,
-        onBackClick = { onBackClick(SAMPLE_HOME) }
-    ) {
-        LazyRow(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            items(viewModel.samples.value) { item ->
-                Box(
-                    modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
-                ) {
+        onBackClick = { onBackClick(SAMPLE_HOME) }) {
+        Column {
+            LazyRow {
+                items(viewModel.effectSamples.value) { item ->
                     Card(
                         modifier = Modifier
                             .padding(20.dp)
@@ -50,7 +40,29 @@ fun SamplesHomeScreen(
                             .clickable { onItemClick(item) },
                         elevation = 4.dp,
                         shape = MaterialTheme.shapes.large,
-                        border = BorderStroke(1.dp, borderColor)
+                    ) {
+                        Box(
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = item,
+                                fontSize = 32.sp,
+                                textAlign = TextAlign.Center,
+                                color = textColor
+                            )
+                        }
+                    }
+                }
+            }
+            LazyRow {
+                items(viewModel.componentSamples.value) { item ->
+                    Card(
+                        modifier = Modifier
+                            .padding(20.dp)
+                            .size(400.dp)
+                            .clickable { onItemClick(item) },
+                        elevation = 4.dp,
+                        shape = MaterialTheme.shapes.large,
                     ) {
                         Box(
                             contentAlignment = Alignment.Center

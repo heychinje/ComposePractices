@@ -6,6 +6,10 @@ internal const val SAMPLE_HOME = "All Samples"
 internal const val SAMPLE_LAZY_COLUMN_EDGE_FADE = "Lazy Column Edge Fade"
 internal const val SAMPLE_LAZY_ROW_EDGE_FADE = "Lazy Row Edge Fade"
 internal const val SAMPLE_TEXT_EDGE_FADE = "Text Edge Fade"
+internal const val SAMPLE_LINEAR_GRADIENT = "Linear Gradient"
+
+internal const val SAMPLE_COLUMN_SCROLL_BAR = "Column Scroll Bar"
+internal const val SAMPLE_TEXT_SCROLL_BAR = "Text Scroll Bar"
 
 @Target(
     AnnotationTarget.FUNCTION,
@@ -20,6 +24,10 @@ internal const val SAMPLE_TEXT_EDGE_FADE = "Text Edge Fade"
     SAMPLE_HOME,
     SAMPLE_LAZY_COLUMN_EDGE_FADE,
     SAMPLE_LAZY_ROW_EDGE_FADE,
-    SAMPLE_TEXT_EDGE_FADE
+    SAMPLE_TEXT_EDGE_FADE,
+    SAMPLE_LINEAR_GRADIENT,
+
+    SAMPLE_COLUMN_SCROLL_BAR,
+    SAMPLE_TEXT_SCROLL_BAR
 )
 annotation class SampleName

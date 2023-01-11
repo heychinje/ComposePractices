@@ -1,7 +1,9 @@
 package com.telenav.composepractices.effects
 
 import androidx.annotation.FloatRange
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Immutable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
@@ -12,6 +14,16 @@ private const val DEG_90 = 90.0
 private const val DEG_180 = 180.0
 private const val DEG_270 = 270.0
 private const val DEG_360 = 360.0
+
+fun Modifier.linearGradient(
+    vararg colorStops: Pair<Float, Color>,
+    @FloatRange(from = DEG_0, to = DEG_360) degrees: Double = 90.0,
+    tileMode: TileMode = TileMode.Clamp
+) = this.background(
+    com.telenav.composepractices.effects.linearGradient(
+        colorStops = colorStops, degrees = degrees, tileMode = tileMode
+    )
+)
 
 fun linearGradient(
     vararg colorStops: Pair<Float, Color>,

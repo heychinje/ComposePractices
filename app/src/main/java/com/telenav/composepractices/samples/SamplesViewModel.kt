@@ -9,12 +9,23 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SamplesViewModel @Inject constructor() : ViewModel() {
-    private val _samples = mutableStateOf<List<String>>(
+    private val _effectSamples = mutableStateOf<List<String>>(
         listOf(
             SAMPLE_LAZY_COLUMN_EDGE_FADE,
             SAMPLE_LAZY_ROW_EDGE_FADE,
             SAMPLE_TEXT_EDGE_FADE,
+            SAMPLE_LINEAR_GRADIENT,
         )
     )
-    val samples: State<List<String>> = _samples
+    val effectSamples: State<List<String>> = _effectSamples
+
+
+    private val _componentSamples = mutableStateOf<List<String>>(
+        listOf(
+            SAMPLE_COLUMN_SCROLL_BAR,
+            SAMPLE_TEXT_SCROLL_BAR,
+        )
+    )
+    val componentSamples: State<List<String>> = _componentSamples
+
 }
