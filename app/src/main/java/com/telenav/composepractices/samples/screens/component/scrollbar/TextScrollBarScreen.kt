@@ -1,4 +1,4 @@
-package com.telenav.composepractices.samples.screens.component
+package com.telenav.composepractices.samples.screens.component.scrollbar
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,11 +14,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.telenav.composepractices.components.END
 import com.telenav.composepractices.components.scrollBar
-import com.telenav.composepractices.samples.constants.SAMPLE_LAZY_COLUMN_EDGE_FADE
-import com.telenav.composepractices.samples.constants.SAMPLE_TEXT_EDGE_FADE
-import com.telenav.composepractices.samples.constants.SAMPLE_TEXT_SCROLL_BAR
-import com.telenav.composepractices.samples.constants.SampleName
-import com.telenav.composepractices.samples.screens.RootScreen
 
 private val SCROLL_BAR_COLOR = Color(0xFF9EA3A6)
 private const val contentString =
@@ -26,34 +21,29 @@ private const val contentString =
 private val textColor = Color(0xFF000000)
 
 @Composable
-fun TextScrollBarScreen(
-    onBackClick: (@SampleName String) -> Unit
-) {
-    RootScreen(screenName = SAMPLE_TEXT_SCROLL_BAR,
-        onBackClick = { onBackClick(SAMPLE_TEXT_SCROLL_BAR) }) {
-        val scrollState = rememberScrollState()
-        Text(
-            text = contentString,
-            color = textColor,
-            textAlign = TextAlign.Start,
-            fontSize = 32.sp,
-            modifier = Modifier
-                .padding(
-                    horizontal = 40.dp
-                )
-                .verticalScroll(scrollState)
-                .scrollBar(
-                    maxScrollableOffset = scrollState.maxValue,
-                    scrolledOffset = scrollState.value,
-                    orientation = Orientation.Vertical,
-                    position = END,
-                    color = SCROLL_BAR_COLOR,
-                    strokeWidth = 2.dp,
-                    isEnabled = scrollState.maxValue != 0 && scrollState.isScrollInProgress,
-                    paddingTop = 10.dp,
-                    paddingBottom = 10.dp,
-                )
-                .fillMaxWidth()
-        )
-    }
+fun TextScrollBar() {
+    val scrollState = rememberScrollState()
+    Text(
+        text = contentString,
+        color = textColor,
+        textAlign = TextAlign.Start,
+        fontSize = 32.sp,
+        modifier = Modifier
+            .padding(
+                horizontal = 40.dp
+            )
+            .verticalScroll(scrollState)
+            .scrollBar(
+                maxScrollableOffset = scrollState.maxValue,
+                scrolledOffset = scrollState.value,
+                orientation = Orientation.Vertical,
+                position = END,
+                color = SCROLL_BAR_COLOR,
+                strokeWidth = 2.dp,
+                isEnabled = scrollState.maxValue != 0 && scrollState.isScrollInProgress,
+                paddingTop = 10.dp,
+                paddingBottom = 10.dp,
+            )
+            .fillMaxWidth()
+    )
 }

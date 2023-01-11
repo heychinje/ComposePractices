@@ -1,21 +1,21 @@
-package com.telenav.composepractices.samples.screens.effect
+package com.telenav.composepractices.samples.screens.effect.edgefade
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import com.telenav.composepractices.effects.linearFade
-import com.telenav.composepractices.samples.constants.SAMPLE_LAZY_COLUMN_EDGE_FADE
-import com.telenav.composepractices.samples.constants.SampleName
 import com.telenav.composepractices.samples.ext.isReachedEnd
 import com.telenav.composepractices.samples.ext.isReachedStart
-import com.telenav.composepractices.samples.screens.RootScreen
 import com.telenav.composepractices.samples.widgets.WeekCard
 
 private val START_LINEAR_FADE_COLOR_STOPS = arrayOf(
@@ -37,9 +37,7 @@ private val data = listOf(
 )
 
 @Composable
-fun LazyRowEdgeFadeScreen(
-    onBackClick: (@SampleName String) -> Unit
-) {
+fun LazyRowEdgeFade() {
     val state = rememberLazyListState()
     val startFadeEnableState = remember { mutableStateOf(false) }
     val endFadeEnableState = remember { mutableStateOf(false) }
@@ -48,29 +46,25 @@ fun LazyRowEdgeFadeScreen(
         startFadeEnableState.value = state.isReachedStart.not()
         endFadeEnableState.value = state.isReachedEnd.not()
     }
-
-    RootScreen(screenName = SAMPLE_LAZY_COLUMN_EDGE_FADE,
-        onBackClick = { onBackClick(SAMPLE_LAZY_COLUMN_EDGE_FADE) }) {
-        LazyRow(
-            state = state,
-            modifier = Modifier
-                .padding(horizontal = 40.dp)
-                // start fade
-                .linearFade(
-                    orientation = Orientation.Horizontal,
-                    colorStops = START_LINEAR_FADE_COLOR_STOPS,
-                    isEnabled = startFadeEnableState.value,
-                    layoutDirection = LocalLayoutDirection.current
-                )
-                // end fade
-                .linearFade(
-                    orientation = Orientation.Horizontal,
-                    colorStops = END_LINEAR_FADE_COLOR_STOPS,
-                    isEnabled = endFadeEnableState.value,
-                    layoutDirection = LocalLayoutDirection.current
-                ),
-        ) {
-            items(data) { WeekCard(item = it) }
-        }
+    LazyRow(
+        state = state,
+        modifier = Modifier
+            .padding(horizontal = 40.dp)
+            // start fade
+            .linearFade(
+                orientation = Orientation.Horizontal,
+                colorStops = START_LINEAR_FADE_COLOR_STOPS,
+                isEnabled = startFadeEnableState.value,
+                layoutDirection = LocalLayoutDirection.current
+            )
+            // end fade
+            .linearFade(
+                orientation = Orientation.Horizontal,
+                colorStops = END_LINEAR_FADE_COLOR_STOPS,
+                isEnabled = endFadeEnableState.value,
+                layoutDirection = LocalLayoutDirection.current
+            ),
+    ) {
+        items(data) { WeekCard(item = it) }
     }
 }

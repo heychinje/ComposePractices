@@ -1,4 +1,4 @@
-package com.telenav.composepractices.samples.screens.effect
+package com.telenav.composepractices.samples.screens.effect.edgefade
 
 import androidx.compose.foundation.gestures.Orientation.Vertical
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,11 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.telenav.composepractices.effects.linearFade
-import com.telenav.composepractices.samples.constants.SAMPLE_TEXT_EDGE_FADE
-import com.telenav.composepractices.samples.constants.SampleName
 import com.telenav.composepractices.samples.ext.isReachedEnd
 import com.telenav.composepractices.samples.ext.isReachedStart
-import com.telenav.composepractices.samples.screens.RootScreen
 
 private val START_LINEAR_FADE_COLOR_STOPS = arrayOf(
     0F to Color(0x00D9D9D9), 0.1774F to Color(0xFFD9D9D9), 1F to Color(0xFFD9D9D9)
@@ -36,9 +33,7 @@ private const val contentString =
 private val textColor = Color(0xFF000000)
 
 @Composable
-fun TextEdgeFadeScreen(
-    onBackClick: (@SampleName String) -> Unit
-) {
+fun TextEdgeFade() {
     val scrollState = rememberScrollState()
     val topFadeEnableState = remember { mutableStateOf(false) }
     val bottomFadeEnableState = remember { mutableStateOf(false) }
@@ -46,31 +41,28 @@ fun TextEdgeFadeScreen(
         topFadeEnableState.value = scrollState.isReachedStart.not()
         bottomFadeEnableState.value = scrollState.isReachedEnd.not()
     }
-    RootScreen(screenName = SAMPLE_TEXT_EDGE_FADE,
-        onBackClick = { onBackClick(SAMPLE_TEXT_EDGE_FADE) }) {
-        Text(
-            text = contentString,
-            color = textColor,
-            textAlign = TextAlign.Start,
-            fontSize = 32.sp,
-            modifier = Modifier
-                .padding(
-                    horizontal = 40.dp
-                )
-                .fillMaxWidth()
-                // start fade
-                .linearFade(
-                    orientation = Vertical,
-                    colorStops = START_LINEAR_FADE_COLOR_STOPS,
-                    isEnabled = topFadeEnableState.value
-                )
-                // end fade
-                .linearFade(
-                    orientation = Vertical,
-                    colorStops = END_LINEAR_FADE_COLOR_STOPS,
-                    isEnabled = bottomFadeEnableState.value
-                )
-                .verticalScroll(scrollState)
-        )
-    }
+    Text(
+        text = contentString,
+        color = textColor,
+        textAlign = TextAlign.Start,
+        fontSize = 32.sp,
+        modifier = Modifier
+            .padding(
+                horizontal = 40.dp
+            )
+            .fillMaxWidth()
+            // start fade
+            .linearFade(
+                orientation = Vertical,
+                colorStops = START_LINEAR_FADE_COLOR_STOPS,
+                isEnabled = topFadeEnableState.value
+            )
+            // end fade
+            .linearFade(
+                orientation = Vertical,
+                colorStops = END_LINEAR_FADE_COLOR_STOPS,
+                isEnabled = bottomFadeEnableState.value
+            )
+            .verticalScroll(scrollState)
+    )
 }

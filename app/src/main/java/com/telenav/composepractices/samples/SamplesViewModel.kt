@@ -3,29 +3,24 @@ package com.telenav.composepractices.samples
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.telenav.composepractices.samples.constants.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class SamplesViewModel @Inject constructor() : ViewModel() {
-    private val _effectSamples = mutableStateOf<List<String>>(
+    private val _effects = mutableStateOf<List<String>>(
         listOf(
-            SAMPLE_LAZY_COLUMN_EDGE_FADE,
-            SAMPLE_LAZY_ROW_EDGE_FADE,
-            SAMPLE_TEXT_EDGE_FADE,
-            SAMPLE_LINEAR_GRADIENT,
+            EFFECT_SAMPLE_EDGE_FADE, EFFECT_SAMPLE_LINEAR_GRADIENT
         )
     )
-    val effectSamples: State<List<String>> = _effectSamples
+    val effects: State<List<String>> = _effects
 
 
-    private val _componentSamples = mutableStateOf<List<String>>(
+    private val _components = mutableStateOf<List<String>>(
         listOf(
-            SAMPLE_COLUMN_SCROLL_BAR,
-            SAMPLE_TEXT_SCROLL_BAR,
+            COMPONENT_SAMPLE_SCROLL_BAR
         )
     )
-    val componentSamples: State<List<String>> = _componentSamples
+    val components: State<List<String>> = _components
 
 }
