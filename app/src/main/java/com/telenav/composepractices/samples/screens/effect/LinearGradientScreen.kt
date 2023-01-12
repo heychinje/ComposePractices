@@ -24,21 +24,59 @@ fun LinearGradientScreen(onBackClick: (@SampleName String) -> Unit) {
     RootScreen(screenName = EFFECT_SAMPLE_LINEAR_GRADIENT,
         onBackClick = { onBackClick(EFFECT_SAMPLE_LINEAR_GRADIENT) }) {
         val scrollState = rememberScrollState()
-        Row(
-            modifier = Modifier
-                .padding(10.dp)
-                .horizontalScroll(scrollState)
-        ) {
-            for (i in 0..360 step 45) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .width(400.dp)
-                        .linearGradient(colorStops = colorStops, degrees = i.toDouble()),
-                ) {
-                    Text(
-                        text = "$i", fontSize = 40.sp, color = textColor
-                    )
+        val size = 300.dp
+        Column{
+            Row(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .horizontalScroll(scrollState)
+            ) {
+                for (i in 0..120 step 24) {
+                    Box(
+                        modifier = Modifier
+                            .size(size)
+                            .linearGradient(colorStops = colorStops, degrees = i.toDouble()),
+                    ) {
+                        Text(
+                            text = "$i", fontSize = 40.sp, color = textColor
+                        )
+                    }
+                }
+            }
+
+            Row(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .horizontalScroll(scrollState)
+            ) {
+                for (i in 144..264 step 24) {
+                    Box(
+                        modifier = Modifier
+                            .size(size)
+                            .linearGradient(colorStops = colorStops, degrees = i.toDouble()),
+                    ) {
+                        Text(
+                            text = "$i", fontSize = 40.sp, color = textColor
+                        )
+                    }
+                }
+            }
+
+            Row(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .horizontalScroll(scrollState)
+            ) {
+                for (i in 288..360 step 24) {
+                    Box(
+                        modifier = Modifier
+                            .size(size)
+                            .linearGradient(colorStops = colorStops, degrees = i.toDouble()),
+                    ) {
+                        Text(
+                            text = "$i", fontSize = 40.sp, color = textColor
+                        )
+                    }
                 }
             }
         }

@@ -8,6 +8,7 @@ const val SCREEN_EDGE_FADE = "com.telenav.composepractices.examples.Destinations
 const val SCREEN_LINEAR_GRADIENT =
     "com.telenav.composepractices.examples.Destinations.SCREEN_LINEAR_GRADIENT"
 const val SCREEN_SCROLL_BAR = "com.telenav.composepractices.examples.Destinations.SCREEN_SCROLL_BAR"
+const val SCREEN_SHADOW = "com.telenav.composepractices.examples.Destinations.SCREEN_SHADOW"
 
 @Target(
     AnnotationTarget.FUNCTION,
@@ -23,12 +24,14 @@ const val SCREEN_SCROLL_BAR = "com.telenav.composepractices.examples.Destination
     SCREEN_EDGE_FADE,
     SCREEN_LINEAR_GRADIENT,
     SCREEN_LINEAR_GRADIENT,
+    SCREEN_SHADOW
 )
 annotation class Destinations
 
-internal const val ALL = "All"
+internal const val ALL = "All Samples"
 internal const val EFFECT_SAMPLE_EDGE_FADE = "Edge Fade"
 internal const val EFFECT_SAMPLE_LINEAR_GRADIENT = "Linear Gradient"
+internal const val EFFECT_SAMPLE_SHADOW = "Shadow"
 internal const val COMPONENT_SAMPLE_SCROLL_BAR = "Scroll Bar"
 
 @Target(
@@ -44,6 +47,7 @@ internal const val COMPONENT_SAMPLE_SCROLL_BAR = "Scroll Bar"
     ALL,
     EFFECT_SAMPLE_EDGE_FADE,
     EFFECT_SAMPLE_LINEAR_GRADIENT,
+    EFFECT_SAMPLE_SHADOW,
     COMPONENT_SAMPLE_SCROLL_BAR,
 )
 annotation class SampleName

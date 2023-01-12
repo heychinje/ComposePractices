@@ -9,6 +9,7 @@ import com.telenav.composepractices.samples.screens.SamplesHomeScreen
 import com.telenav.composepractices.samples.screens.component.ScrollbarScreen
 import com.telenav.composepractices.samples.screens.effect.EdgeFadeScreen
 import com.telenav.composepractices.samples.screens.effect.LinearGradientScreen
+import com.telenav.composepractices.samples.screens.effect.ShadowScreen
 
 @Composable
 fun SamplesNavGraph() {
@@ -19,6 +20,7 @@ fun SamplesNavGraph() {
             when (sampleName) {
                 EFFECT_SAMPLE_EDGE_FADE -> SCREEN_EDGE_FADE
                 EFFECT_SAMPLE_LINEAR_GRADIENT -> SCREEN_LINEAR_GRADIENT
+                EFFECT_SAMPLE_SHADOW -> SCREEN_SHADOW
                 COMPONENT_SAMPLE_SCROLL_BAR -> SCREEN_SCROLL_BAR
                 else -> null
             }?.let {
@@ -39,6 +41,7 @@ fun SamplesNavGraph() {
         // effect screens
         composable(SCREEN_EDGE_FADE) { EdgeFadeScreen(onBackClick) }
         composable(SCREEN_LINEAR_GRADIENT) { LinearGradientScreen(onBackClick) }
+        composable(SCREEN_SHADOW) { ShadowScreen(onBackClick) }
 
         // component screens
         composable(SCREEN_SCROLL_BAR) { ScrollbarScreen(onBackClick) }

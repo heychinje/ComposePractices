@@ -10,7 +10,7 @@ import javax.inject.Inject
 class SamplesViewModel @Inject constructor() : ViewModel() {
     private val _effects = mutableStateOf<List<String>>(
         listOf(
-            EFFECT_SAMPLE_EDGE_FADE, EFFECT_SAMPLE_LINEAR_GRADIENT
+            EFFECT_SAMPLE_EDGE_FADE, EFFECT_SAMPLE_LINEAR_GRADIENT, EFFECT_SAMPLE_SHADOW
         )
     )
     val effects: State<List<String>> = _effects
